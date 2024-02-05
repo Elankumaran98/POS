@@ -3,8 +3,8 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const dotenv = require("dotenv");
-const { bgRed, bgCyan } = require("colors");
-const connectDB=require('./config/config')
+const connectDB = require('./config/config')
+
 require("colors");
 dotenv.config();
 
@@ -14,6 +14,8 @@ connectDB()
 //rest object
 const app = express();
 
+
+
 //middleware
 app.use(cors());
 app.use(express.json());
@@ -21,10 +23,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan("dev"));
 
-//routes
-app.get("/", (req, res) => {
-  res.send("<h1>POS Backend</h1>");
-});
+const itemRoute = require("./routes/itemRoute");
+
+app.get('/', (req, res) => {
+  res.send("hi")
+})
+
+app.use('/api/items/',itemRoute)
 
 //listen
 const PORT = process.env.PORT || 8080;
