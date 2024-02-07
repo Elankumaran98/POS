@@ -1,13 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Nabla&family=Sora:wght@100..800&display=swap");
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: "Sora", sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.demo-logo-vertical h2 {
+  color: aliceblue;
+  text-align: center;
+  padding: 10px;
+  background-color: rgb(116, 95, 40);
+  border-radius: 15px;
+}
+
+.link{
+    text-decoration: none;
 }
