@@ -1,12 +1,28 @@
 import React from "react";
 import DefaultLayout from "../components/DefaultLayout";
-import { useSelector } from "react-redux";
-import { DeleteOutlined } from "@ant-design/icons";
-import { Table } from 'antd'; 
-
+import { useSelector,useDispatch } from "react-redux";
+import {
+  DeleteOutlined,
+  PlusCircleOutlined,
+  MinusCircleOutlined,
+} from "@ant-design/icons";
+import { Table } from "antd";
 
 const CartPage = () => {
   const { cartItems } = useSelector((state) => state.rootReducer);
+  const dispatch=useDispatch()
+  const handleIncrement = (record) => {
+    dispatch({
+      type: "UPDATE_CART",
+      payload: { ...record, quantity: record.quantity + 1 },
+    });
+  }
+  const handleDecrement = (record) => {
+    dispatch({
+      type: "UPDATE_CART",
+      payload: { ...record, quantity: record.quantity - 1 },
+    });
+  }
   const columns = [
     {
       title: "Name",
@@ -25,6 +41,26 @@ const CartPage = () => {
     },
     {
       title: "Quantity",
+      dataIndex: "id",
+      render: (_id, record) => (
+        <div>
+          <PlusCircleOutlined
+            className="mx-3"
+            style={{
+              cursor: "pointer",
+            }}
+            onClick={() => handleIncrement(record)}
+          />
+          <b>{record.quantity}</b>
+          <MinusCircleOutlined
+            className="mx-3"
+            style={{
+              cursor: "pointer",
+            }}
+            onClick={() => handleDecrement(record)}
+          />
+        </div>
+      ),
     },
     {
       title: "Actions",
@@ -32,11 +68,13 @@ const CartPage = () => {
       render: (id, record) => <DeleteOutlined />,
     },
   ];
-  console.log(columns)
-  return <DefaultLayout>
-    <h3>Cart Page</h3>
-    <Table columns={columns} dataSource={cartItems} bordered/>
-  </DefaultLayout>;
+  console.log(columns);
+  return (
+    <DefaultLayout>
+      <h3>Cart Page</h3>
+      <Table columns={columns} dataSource={cartItems} bordered />
+    </DefaultLayout>
+  );
 };
 
 export default CartPage;
