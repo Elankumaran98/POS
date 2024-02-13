@@ -15,3 +15,13 @@ body {
 .link{
     text-decoration: none;
 }
+
+.item-button{
+  margin-top: 20px;
+  width: 200px;
+  background-color: rgb(47, 128, 0);
+}
+
+.cart-item{
+  align-items: center;
+}

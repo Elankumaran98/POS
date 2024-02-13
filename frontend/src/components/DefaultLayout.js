@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
@@ -7,13 +8,20 @@ import {
   CopyOutlined,
   UnorderedListOutlined,
   LogoutOutlined,
+  ShoppingCartOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, Button, theme } from "antd";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 const { Header, Sider, Content } = Layout;
 
-const DefaultLayout = ({children}) => {
+const DefaultLayout = ({ children }) => {
+  const { cartItems } = useSelector((state) => state.rootReducer);
   const [collapsed, setCollapsed] = useState(false);
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  }, [cartItems]);
+  const navigate=useNavigate()
+
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
@@ -54,6 +62,9 @@ const DefaultLayout = ({children}) => {
           style={{
             padding: 0,
             background: colorBgContainer,
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
           }}>
           <Button
             type="text"
@@ -65,6 +76,20 @@ const DefaultLayout = ({children}) => {
               height: 64,
             }}
           />
+          <div className="cart-item d-flex align-items-center" onClick={()=>navigate('/cart')}>
+            <p
+              className="cart-item-text"
+              style={{
+                display: "inline-block",
+                margin: 0,
+                lineHeight: "16px",
+                marginRight: "10px",
+                fontWeight: "bold",
+              }}>
+              {cartItems.length}
+            </p>
+            <ShoppingCartOutlined />
+          </div>
         </Header>
         <Content
           style={{
