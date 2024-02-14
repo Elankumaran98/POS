@@ -12,10 +12,11 @@ import {
 } from "@ant-design/icons";
 import { Layout, Menu, Button, theme } from "antd";
 import { Link,useNavigate } from "react-router-dom";
+import Spinner from "./Spinner";
 const { Header, Sider, Content } = Layout;
 
 const DefaultLayout = ({ children }) => {
-  const { cartItems } = useSelector((state) => state.rootReducer);
+  const { cartItems,loading } = useSelector((state) => state.rootReducer);
   const [collapsed, setCollapsed] = useState(false);
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
@@ -27,6 +28,7 @@ const DefaultLayout = ({ children }) => {
   } = theme.useToken();
   return (
     <Layout style={{ height: "100vh" }}>
+      {loading && <Spinner/>}
       <Sider trigger={null} collapsible collapsed={collapsed}>
         <div className="demo-logo-vertical">
           <h2>POS</h2>
