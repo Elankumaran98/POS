@@ -18,10 +18,19 @@ const CartPage = () => {
     });
   }
   const handleDecrement = (record) => {
+    if (record.quantity !== 1) {
+      dispatch({
+        type: "UPDATE_CART",
+        payload: { ...record, quantity: record.quantity - 1 },
+      });
+    }
+  }
+
+  const handleDelete = (record) => {
     dispatch({
-      type: "UPDATE_CART",
-      payload: { ...record, quantity: record.quantity - 1 },
-    });
+      type: "DELETE_FROM_CART",
+      payload: record
+    })
   }
   const columns = [
     {
@@ -65,7 +74,14 @@ const CartPage = () => {
     {
       title: "Actions",
       dataIndex: "_id",
-      render: (id, record) => <DeleteOutlined />,
+      render: (id, record) => (
+        <DeleteOutlined
+          style={{
+            cursor: "pointer",
+          }}
+          onClick={() => handleDelete(record)}
+        />
+      ),
     },
   ];
   console.log(columns);
