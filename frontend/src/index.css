@@ -30,3 +30,22 @@ body {
   width: 200px;
   height: 200px;
 }
+
+.category{
+  border: 2px solid gold;
+  border-radius: 15px;
+  margin-right: 25px;
+  margin-bottom: 10px;
+  padding: 10px;
+  cursor: pointer;
+  background-color: rgb(231, 217, 137);
+}
+
+.category img{
+  margin-left: 10px;
+}
+
+.category-active{
+  border: 2px solid green;
+  background-color: rgb(182, 235, 182);
+}
