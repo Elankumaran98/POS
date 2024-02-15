@@ -49,3 +49,23 @@ body {
   border: 2px solid green;
   background-color: rgb(182, 235, 182);
 }
+
+
+.register{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+  box-shadow: reba(0,0,0,0.35) 0px 5px 15px;
+}
+
+.register input{
+  width: 400px !important;
+} 
+
+.link{
+  text-decoration: none !important;
+  padding-left: 10px;
+  padding-right: 100px;
+}
