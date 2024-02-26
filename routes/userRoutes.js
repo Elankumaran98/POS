@@ -1,7 +1,9 @@
-const User =require ("../models/userModels");
+const express = require("express");
+const userRouter = express.Router();
+const User = require("../models/userModels");
 
-//for login
- const loginController = async (req, res) => {
+
+userRouter.post("/login", async (req, res) => {
   try {
     const { userId, password } = req.body;
     const user = await User.findOne({ userId, password });
@@ -16,10 +18,9 @@ const User =require ("../models/userModels");
   } catch (error) {
     console.log(error);
   }
-};
+});
 
-//for register
- const registerController = async (req, res) => {
+userRouter.post("/register",async (req, res) => {
   try {
     const newUser = new User({ ...req.body, verified: true });
     await newUser.save();
@@ -27,9 +28,6 @@ const User =require ("../models/userModels");
   } catch (error) {
     console.log(error);
   }
-};
+});
 
-
-module.exports = {
-  registerController,loginController
-}
+module.exports = userRouter;

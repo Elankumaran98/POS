@@ -1,38 +1,46 @@
-const express = require("express");
-const morgan = require("morgan");
-const bodyParser = require("body-parser");
-const cors = require("cors");
-const dotenv = require("dotenv");
-const connectDB = require('./config/config')
 
-require("colors");
+const express = require("express");
+const bodyParser = require ("body-parser");
+const cors = require ("cors");
+const morgan = require ("morgan");
+const dotenv = require ("dotenv");
+const mongoose = require ("mongoose");
+const productRouter = require ("./routes/productRoutes.js");
+const userRouter = require ("./routes/userRoutes.js");
+const billsRouter = require("./routes/billsRoutes.js");
+require('color');
+
 dotenv.config();
 
-//db config
-connectDB()
+//Connect with MongoDB
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => {
+    console.log("Connected to DB");
+  })
+  .catch((err) => {
+    console.log(err.message);
+  });
 
-//rest object
 const app = express();
 
-
-
-//middleware
+//middlewares
 app.use(cors());
 app.use(express.json());
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan("dev"));
 
-const itemRoute = require("./routes/itemRoute");
+//routes
+app.use("/api/products/", productRouter);
+app.use("/api/users/", userRouter);
+app.use("/api/bills/", billsRouter);
 
-app.get('/', (req, res) => {
-  res.send("hi")
-})
+//Create Port
+const PORT = process.env.PORT || 5000;
 
-app.use('/api/items/',itemRoute)
-
-//listen
-const PORT = process.env.PORT || 8080;
+//Listen
 app.listen(PORT, () => {
-  console.log(`Server Running on ${PORT}`.bgRed.white);
+  console.log(`Serve at running on the port: http://localhost:${PORT}`);
 });
