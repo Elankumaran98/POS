@@ -4,24 +4,14 @@ const bodyParser = require ("body-parser");
 const cors = require ("cors");
 const morgan = require ("morgan");
 const dotenv = require ("dotenv");
-const mongoose = require ("mongoose");
 const productRouter = require ("./routes/productRoutes.js");
 const userRouter = require ("./routes/userRoutes.js");
 const billsRouter = require("./routes/billsRoutes.js");
-require('color');
+const connectDB=require('./config/config.js')
+require('colors');
 
 dotenv.config();
-
-//Connect with MongoDB
-mongoose
-  .connect(process.env.MONGO_URI)
-  .then(() => {
-    console.log("Connected to DB");
-  })
-  .catch((err) => {
-    console.log(err.message);
-  });
-
+connectDB()
 const app = express();
 
 //middlewares

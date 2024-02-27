@@ -46,7 +46,7 @@ const HomePage = () => {
     };
 
     getAllProducts();
-  }, [dispatch]);
+  }, []);
 
   return (
     <LayoutApp>
@@ -73,7 +73,7 @@ const HomePage = () => {
           .filter((i) => i.category === selectedCategory)
           .map((product) => (
             <Col xs={24} sm={6} md={12} lg={6}>
-              <Product key={product.id} product={product} />
+              <Product  product={product} />
             </Col>
           ))}
       </Row>

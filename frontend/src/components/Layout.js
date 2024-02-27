@@ -4,10 +4,11 @@ import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
   HomeOutlined,
-  UserSwitchOutlined,
-  MoneyCollectOutlined,
+  CopyOutlined,
   LogoutOutlined,
   ShoppingCartOutlined,
+  UnorderedListOutlined,
+  UserOutlined,
 } from "@ant-design/icons";
 import "./layout.css";
 import { Link, useNavigate } from "react-router-dom";
@@ -42,18 +43,27 @@ const LayoutApp = ({ children }) => {
           mode="inline"
           defaultSelectedKeys={window.location.pathname}>
           <Menu.Item key="/" icon={<HomeOutlined />}>
-            <Link to="/">Home</Link>
+            <Link className="link" to="/">
+              Home
+            </Link>
           </Menu.Item>
-          <Menu.Item key="/bills" icon={<MoneyCollectOutlined />}>
-            <Link to="/bills">Bills</Link>
+          <Menu.Item key="/bills" icon={<CopyOutlined />}>
+            <Link className="link" to="/bills">
+              Bills
+            </Link>
           </Menu.Item>
-          <Menu.Item key="/products" icon={<HomeOutlined />}>
-            <Link to="/products">Products</Link>
+          <Menu.Item key="/products" icon={<UnorderedListOutlined />}>
+            <Link className="link" to="/products">
+              Products
+            </Link>
           </Menu.Item>
-          <Menu.Item key="/customers" icon={<UserSwitchOutlined />}>
-            <Link to="/customers">Customers</Link>
+          <Menu.Item key="/customers" icon={<UserOutlined />}>
+            <Link className="link" to="/customers">
+              Customers
+            </Link>
           </Menu.Item>
           <Menu.Item
+            className="link"
             key="/logout"
             icon={<LogoutOutlined />}
             onClick={() => {

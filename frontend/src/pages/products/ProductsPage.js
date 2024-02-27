@@ -53,7 +53,7 @@ const ProductsPage = () => {
       dispatch({
         type: "HIDE_LOADING",
       });
-      message.error("Error!");
+      message.error("Something Went Wrong");
       console.log(error);
     }
   };
@@ -75,7 +75,7 @@ const ProductsPage = () => {
       dataIndex: "price",
     },
     {
-      title: "Action",
+      title: "Actions",
       dataIndex: "_id",
       render: (id, record) => (
         <div>
@@ -96,13 +96,14 @@ const ProductsPage = () => {
   ];
 
   const handlerSubmit = async (value) => {
-    //console.log(value);
+    console.log(value);
     if (editProduct === null) {
       try {
         dispatch({
           type: "SHOW_LOADING",
         });
         const res = await axios.post("/api/products/addproducts", value);
+        console.log(res);
         message.success("Product Added Successfully!");
         getAllProducts();
         setPopModal(false);
@@ -113,7 +114,7 @@ const ProductsPage = () => {
         dispatch({
           type: "HIDE_LOADING",
         });
-        message.error("Error!");
+        message.error("Something Went Wrong");
         console.log(error);
       }
     } else {
@@ -152,7 +153,7 @@ const ProductsPage = () => {
       {popModal && (
         <Modal
           title={`${editProduct !== null ? "Edit Product" : "Add New Product"}`}
-          visible={popModal}
+          open={popModal}
           onCancel={() => {
             setEditProduct(null);
             setPopModal(false);

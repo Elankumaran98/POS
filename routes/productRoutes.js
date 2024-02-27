@@ -1,4 +1,5 @@
 const express = require("express");
+const Product=require('../models/productModel')
 const productRouter = express.Router();
 
 productRouter.get("/getproducts", async (req, res) => {
@@ -6,7 +7,8 @@ productRouter.get("/getproducts", async (req, res) => {
     const products = await Product.find();
     res.status(200).send(products);
   } catch (error) {
-    console.log(error);
+    console.error(error);
+    res.status(500).send("Error retrieving Products"); 
   }
 });
 
@@ -16,6 +18,7 @@ productRouter.post("/addproducts", async (req, res) => {
     await newProducts.save();
     res.status(200).send("Products Created Successfully!");
   } catch (error) {
+    res.status(400).send("Error" + error);
     console.log(error);
   }
 });
@@ -25,7 +28,7 @@ productRouter.put("/updateproducts", async (req, res) => {
     await Product.findOneAndUpdate({ _id: req.body.productId }, req.body, {
       new: true,
     });
-    res.status(201).json("Product Updated!");
+    res.status(201).json("Product Updated successfully!");
   } catch (error) {
     res.status(400).send(error);
     console.log(error);
@@ -35,7 +38,7 @@ productRouter.put("/updateproducts", async (req, res) => {
 productRouter.post("/deleteproducts", async (req, res) => {
   try {
     await Product.findOneAndDelete({ _id: req.body.productId });
-    res.status(200).json("Product Deleted!");
+    res.status(200).json("Product Deleted successfully!");
   } catch (error) {
     res.status(400).send(error);
     console.log(error);
