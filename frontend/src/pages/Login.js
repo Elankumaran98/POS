@@ -1,39 +1,68 @@
-import React from 'react'
-import { Button, Form, Input } from "antd";
-import { Link } from "react-router-dom";
+import { Button, Form, Input, message } from "antd";
+import FormItem from "antd/lib/form/FormItem";
+import axios from "axios";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
-   const handleSubmit = (value) => {
-     console.log(value);
-   };
-  return (
-    <>
-      <div className="register">
-        <h2>POS</h2>
-        <Form layout="vertical" onFinish={handleSubmit}>
-          <h3>Login Page</h3>
-          <Form.Item name="userId" label="User ID">
-            <Input />
-          </Form.Item>
-          <Form.Item name="password" label="Password">
-            <Input type="password" />
-          </Form.Item>
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-          <div className="d-flex justify-content-end">
-            <p>
-             Not A User Please
-              <Link to="/register" className="link">
-                Register Here
-              </Link>
-            </p>
-            <Button type="primary" danger htmlType="submit">
-              Register
+  const BACKEND_URL = "http://localhost:8080/api/users/login"; // Replace with your actual backend URL
+
+  const handlerSubmit = async (value) => {
+    try {
+      dispatch({
+        type: "SHOW_LOADING",
+      });
+      const res = await axios.post(BACKEND_URL, value); // Use the correct URL
+      dispatch({
+        type: "HIDE_LOADING",
+      });
+      message.success("User Login Successfully!");
+      localStorage.setItem("auth", JSON.stringify(res.data));
+      navigate("/");
+    } catch (error) {
+      dispatch({
+        type: "HIDE_LOADING",
+      });
+      message.error("Error!");
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    if (localStorage.getItem("auth")) {
+      localStorage.getItem("auth");
+      navigate("/");
+    }
+  }, [navigate]);
+
+  return (
+    <div className="form">
+      <h2>POS SYSTEM</h2>
+      <p>Login</p>
+      <div className="form-group">
+        <Form layout="vertical" onFinish={handlerSubmit}>
+          <FormItem name="userId" label="Email Address">
+            <Input placeholder="Enter Email Address" />
+          </FormItem>
+          <FormItem name="password" label="Password">
+            <Input type="password" placeholder="Enter Password" />
+          </FormItem>
+          <div className="form-btn-add">
+            <Button htmlType="submit" className="add-new">
+              Login
             </Button>
+            <Link className="form-other" to="/register">
+              Register Here!
+            </Link>
           </div>
         </Form>
       </div>
-    </>
+    </div>
   );
-}
+};
 
-export default Login
+export default Login;

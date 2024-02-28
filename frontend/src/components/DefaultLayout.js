@@ -28,7 +28,7 @@ const DefaultLayout = ({ children }) => {
   } = theme.useToken();
   return (
     <Layout style={{ height: "100vh" }}>
-      {loading && <Spinner/>}
+      {loading && <Spinner />}
       <Sider trigger={null} collapsible collapsed={collapsed}>
         <div className="demo-logo-vertical">
           <h2>POS</h2>
@@ -46,7 +46,7 @@ const DefaultLayout = ({ children }) => {
           </Menu.Item>
           <Menu.Item key="/items" icon={<UnorderedListOutlined />}>
             <Link className="link" to="/items">
-              Items
+              Foods
             </Link>
           </Menu.Item>
           <Menu.Item key="/customers" icon={<UserOutlined />}>
@@ -54,7 +54,14 @@ const DefaultLayout = ({ children }) => {
               Customers
             </Link>
           </Menu.Item>
-          <Menu.Item key="/logout" icon={<LogoutOutlined />}>
+          <Menu.Item
+            className="link"
+            key="/logout"
+            icon={<LogoutOutlined />}
+            onClick={() => {
+              localStorage.removeItem("auth");
+              navigate("/login");
+            }}>
             LogOut
           </Menu.Item>
         </Menu>
@@ -78,7 +85,9 @@ const DefaultLayout = ({ children }) => {
               height: 64,
             }}
           />
-          <div className="cart-item d-flex align-items-center" onClick={()=>navigate('/cart')}>
+          <div
+            className="cart-item d-flex align-items-center"
+            onClick={() => navigate("/cart")}>
             <p
               className="cart-item-text"
               style={{
