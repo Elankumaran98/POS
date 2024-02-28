@@ -22,11 +22,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan("dev"));
 
 const itemRoute = require("./routes/itemRoute");
+const userRoute=require('./routes/userRoute')
 
 app.get("/", (req, res) => {
   res.send("hi");
 });
 
+app.use('/api/users/',userRoute)
 app.use("/api/items/", itemRoute);
 
 //listen
