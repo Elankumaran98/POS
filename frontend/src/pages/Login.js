@@ -40,24 +40,27 @@ const Login = () => {
   }, [navigate]);
 
   return (
-    <div className="form">
+    <div className="register">
       <h2>POS SYSTEM</h2>
-      <p>Login</p>
       <div className="form-group">
         <Form layout="vertical" onFinish={handlerSubmit}>
-          <FormItem name="userId" label="Email Address">
+          <h3>Login</h3>
+          <FormItem name="Email" label="Email Address">
             <Input placeholder="Enter Email Address" />
           </FormItem>
           <FormItem name="password" label="Password">
             <Input type="password" placeholder="Enter Password" />
           </FormItem>
-          <div className="form-btn-add">
-            <Button htmlType="submit" className="add-new">
+          <div className="d-flex justify-content-end">
+            <p>
+              Not A User Please
+              <Link to="/register" className="link">
+                Register Here
+              </Link>
+            </p>
+            <Button type="primary" danger htmlType="submit">
               Login
             </Button>
-            <Link className="form-other" to="/register">
-              Register Here!
-            </Link>
           </div>
         </Form>
       </div>

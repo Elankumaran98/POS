@@ -172,6 +172,7 @@ const ItemPage = () => {
             <Form.Item name="category" label="Category">
               <Select>
                 <Select.Option value="drinks">Drinks</Select.Option>
+                <Select.Option value="noodles">Pizzas</Select.Option>
                 <Select.Option value="rice">Rice</Select.Option>
                 <Select.Option value="noodles">Noodles</Select.Option>
               </Select>

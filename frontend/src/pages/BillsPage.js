@@ -162,7 +162,7 @@ const BillsPage = () => {
                     <div className="group">
                       <span>Price:</span>
                       <span>
-                        <b>${product.price}</b>
+                        <b>Rs{product.price}</b>
                       </span>
                     </div>
                   </div>
@@ -172,7 +172,7 @@ const BillsPage = () => {
                 <div className="group">
                   <h3>Total:</h3>
                   <h3>
-                    <b>${selectedBill.totalAmount}</b>
+                    <b>Rs{selectedBill.totalAmount}</b>
                   </h3>
                 </div>
               </div>

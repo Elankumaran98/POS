@@ -10,19 +10,24 @@ const HomePage = () => {
   const [selectCategory, setSelectCategory] = useState("drinks");
   const categories = [
     {
-      name: "drink",
+      name: "drinks",
       imageUrl:
-        "https://www.beanilla.com/wp/wp-content/uploads/2022/06/RefreshingDrinks.jpg",
+        "https://images.vexels.com/media/users/3/246333/isolated/preview/9626dce3278f72220ea2736de64e6233-pink-cocktail-color-stroke.png",
+    },
+    {
+      name: "pizzas",
+      imageUrl:
+        "https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/27954/pizza-pepperoni-clipart-xl.png",
     },
     {
       name: "rice",
       imageUrl:
-        "https://www.recipetineats.com/wp-content/uploads/2023/08/Garlic-rice_5.jpg",
+        "https://media.istockphoto.com/id/547231286/vector/rice-bowl.jpg?s=612x612&w=0&k=20&c=BEGxL9RpCgszeuwC2_Y4UVZfYAcqnX7Nol6u4OjW44M=",
     },
     {
       name: "noodles",
       imageUrl:
-        "https://tiffycooks.com/wp-content/uploads/2021/09/Screen-Shot-2021-09-21-at-5.21.37-PM.png",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvyHhR7ODSKenL8PWYX9pKzW_p9eC2RE9DSMfdOby00A&s",
     },
   ];
   const dispatch = useDispatch();

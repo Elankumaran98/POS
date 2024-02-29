@@ -37,27 +37,30 @@ const Register = () => {
   }, [navigate]);
 
   return (
-    <div className="form">
+    <div className="register">
       <h2>POS SYSTEM</h2>
-      <p>Register Account</p>
       <div className="form-group">
         <Form layout="vertical" onFinish={handlerSubmit}>
+          <h3>Pegister Page</h3>
           <FormItem name="name" label="Name">
             <Input placeholder="Enter Username" />
           </FormItem>
-          <FormItem name="userId" label="Email Address">
+          <FormItem name="email" label="Email Address">
             <Input placeholder="Enter Email Address" />
           </FormItem>
           <FormItem name="password" label="Password">
             <Input type="password" placeholder="Enter Password" />
           </FormItem>
-          <div className="form-btn-add">
-            <Button htmlType="submit" className="add-new">
+          <div className="d-flex justify-content-end">
+            <p>
+              Alredy Register Please
+              <Link to="/login" className="link">
+                Login Here
+              </Link>
+            </p>
+            <Button type="primary" danger htmlType="submit">
               Register
             </Button>
-            <Link className="form-other" to="/login">
-              Login Here!
-            </Link>
           </div>
         </Form>
       </div>
