@@ -22,14 +22,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan("dev"));
 
 const itemRoute = require("./routes/itemRoute");
-const userRoute=require('./routes/userRoute')
+const userRoute = require('./routes/userRoute')
+const billsRoute=require('./routes/billsRoute')
 
-app.get("/", (req, res) => {
-  res.send("hi");
-});
 
 app.use('/api/users/',userRoute)
 app.use("/api/items/", itemRoute);
+app.use("/api/bills/", billsRoute);
 
 //listen
 const PORT = process.env.PORT || 8080;

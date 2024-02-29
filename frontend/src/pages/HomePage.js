@@ -44,6 +44,7 @@ const HomePage = () => {
     };
     getallitems();
   }, []);
+  const myData=itemsData.filter((i)=>i.category===selectCategory)
   return (
     <DefaultLayout>
       <div className="d-flex">
@@ -64,7 +65,7 @@ const HomePage = () => {
         ))}
       </div>
       <Row>
-        {itemsData.filter((i)=>i.category===selectCategory).map((item) => (
+        {myData.map((item) => (
           <Col xs={24} lg={6} md={12} sm={6}>
             <ItemList item={item} />
           </Col>

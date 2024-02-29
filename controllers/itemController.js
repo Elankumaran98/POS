@@ -6,7 +6,7 @@ const getItemController = async (req, res) => {
     res.status(200).send(items);
   } catch (error) {
     console.error(error);
-    res.status(500).send("Error retrieving items"); // Send error response
+    res.status(500).send("Error retrieving items");
   }
 };
 

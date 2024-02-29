@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-//for create table into db
+
 const userSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
@@ -8,7 +8,6 @@ const userSchema = new mongoose.Schema(
     verified: { type: Boolean },
   },
   {
-    //for date
     timestamps: true,
   }
 );

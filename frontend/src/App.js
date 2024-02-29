@@ -1,9 +1,11 @@
-import { Routes,Route,Navigate } from "react-router-dom";
-import HomePage from './pages/HomePage';
-import ItemPage from './pages/ItemPage';
+import { Routes, Route, Navigate } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import ItemPage from "./pages/ItemPage";
 import CartPage from "./pages/CartPage";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import BillsPage from "./pages/BillsPage";
+import CustomersPage from "./pages/CustomersPage";
 
 function App() {
   return (
@@ -14,6 +16,14 @@ function App() {
           element={
             <ProtectedRouter>
               <HomePage />
+            </ProtectedRouter>
+          }
+        />
+        <Route
+          path="/bills"
+          element={
+            <ProtectedRouter>
+              <BillsPage />
             </ProtectedRouter>
           }
         />
@@ -30,6 +40,14 @@ function App() {
           element={
             <ProtectedRouter>
               <CartPage />
+            </ProtectedRouter>
+          }
+        />
+        <Route
+          path="/customers"
+          element={
+            <ProtectedRouter>
+              <CustomersPage />
             </ProtectedRouter>
           }
         />
