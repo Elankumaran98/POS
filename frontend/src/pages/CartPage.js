@@ -120,7 +120,7 @@ const CartPage = () => {
     }
   };
   return (
-    <DefaultLayout>
+    <DefaultLayout title={"Order Details"}>
       <h2>Cart</h2>
       <Table dataSource={cartItems} columns={columns} bordered />
       <div className="subTotal">

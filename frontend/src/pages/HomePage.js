@@ -51,7 +51,7 @@ const HomePage = () => {
   }, []);
   const myData=itemsData.filter((i)=>i.category===selectCategory)
   return (
-    <DefaultLayout>
+    <DefaultLayout title={"Buy With Our System"}>
       <div className="d-flex">
         {categories.map((category) => (
           <div

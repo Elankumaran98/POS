@@ -51,7 +51,7 @@ const CustomersPage = () => {
   ];
 
   return (
-    <DefaultLayout>
+    <DefaultLayout title={"Customer Details"}>
       <h2>All Customers </h2>
       <Table dataSource={billsData} columns={columns} bordered />
     </DefaultLayout>

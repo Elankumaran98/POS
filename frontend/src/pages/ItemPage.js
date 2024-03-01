@@ -141,7 +141,7 @@ const ItemPage = () => {
   };
 
   return (
-    <DefaultLayout>
+    <DefaultLayout title={"Products List"}>
       <div className="d-flex justify-content-between">
         <h3>Items List</h3>
         <Button onClick={() => setPopModal(true)}>ADD ITEM</Button>

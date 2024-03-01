@@ -88,7 +88,7 @@ const BillsPage = () => {
   });
 
   return (
-    <DefaultLayout>
+    <DefaultLayout title={"Customer Bills"}>
       <h2>All Invoice </h2>
       <Table dataSource={billsData} columns={columns} bordered />
 
